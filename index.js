@@ -8,7 +8,18 @@ const TodoModel = require('./Models/Todo');
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/db1');
+// mongoose.connect('mongodb://localhost:27017/db1');
+//hosting code starts
+const uri = 'mongodb+srv://mohammedanwarabbas:yvbpDTagDjbjdE4d@cluster0.ropsivl.mongodb.net/?retryWrites=true&w=majority';
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('Connected to MongoDB');
+});
+
+//hosting code ends
 
 app.get('/getdata/',(req,res)=>{
     TodoModel.find()
