@@ -12,7 +12,7 @@ app.use(express.json());
 //hosting code starts
 const uri = 'mongodb+srv://mohammedanwarabbas:yvbpDTagDjbjdE4d@cluster0.ropsivl.mongodb.net/?retryWrites=true&w=majority';
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true,ssl: true });
 
 const connection = mongoose.connection;
 connection.once('open', () => {
@@ -64,7 +64,7 @@ app.delete('/deletetask/:id', (req, res) => {
 
 
 app.listen(PORT,()=>{
-    console.log(`server is running at ${port}`);
+    console.log(`server is running at ${PORT}`);
 });
 
 
